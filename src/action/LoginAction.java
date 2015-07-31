@@ -81,7 +81,7 @@ public class LoginAction extends BaseAction{
     		StringBuilder sb=new StringBuilder("A,");//職員工基本
     		
     		if(dm.sqlGetInt("SELECT COUNT(*)FROM Dtime WHERE techid='"+user.get("username")+"'")>0||
-    		dm.sqlGetInt("SELECT COUNT(*)FROM SDtime WHERE techid='"+user.get("username")+"'")>0){
+    		dm.sqlGetInt("SELECT COUNT(*)FROM Sdtime WHERE techid='"+user.get("username")+"'")>0){
     			sb.append("T,");//教師基本
     		}
     		
