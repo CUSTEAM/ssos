@@ -28,9 +28,10 @@
 
 <!--[if lt IE 9]>
 <script type="text/javascript">
-if (window.confirm('偵測到系統不支援的IE瀏覽器版本, 請問是否要下載最新瀏覽器?')) {
+/*if (window.confirm('偵測到系統不支援的IE瀏覽器版本, 請問是否要下載最新瀏覽器?')) {
     window.location.href='http://windows.microsoft.com/zh-tw/internet-explorer/download-ie';
-}
+}*/
+window.location.href='http://mozilla.com.tw';
 </script>
 <![endif]-->
 <script>
