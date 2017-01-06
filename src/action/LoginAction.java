@@ -47,11 +47,7 @@ public class LoginAction extends BaseAction{
 			c.add(Restrictions.eq("freename", username));
 			c.add(Restrictions.eq("password", password));
 			list=df.getHibernateDAO().getHibernateTemplate().findByCriteria(c);
-		}		
-    	for(int i=0; i<list.size(); i++){
-    		System.out.println(list.get(i).getFreename());
-    	}
-		
+		}
 		if(list.size()<1){			
 			msg.setError("驗證失敗");
 			savMessage(msg);
