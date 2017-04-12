@@ -78,7 +78,7 @@ public class LoginAction extends BaseAction{
     	
     	//教職員
     	if(user.getPriority().equals("A")){
-    		StringBuilder sb=new StringBuilder("A,");//職員工基本
+    		StringBuilder sb=new StringBuilder("U,");//職員工基本
     		
     		if(dm.sqlGetInt("SELECT COUNT(*)FROM Dtime WHERE techid='"+username+"'")>0||
     		dm.sqlGetInt("SELECT COUNT(*)FROM Sdtime WHERE techid='"+username+"'")>0||
@@ -90,16 +90,17 @@ public class LoginAction extends BaseAction{
     			sb.append("S,");//系助理
     		}
     		
-    		if(dm.sqlGetInt("SELECT COUNT(*) FROM empl WHERE idno='"+username+"' AND (sname LIKE '%主任%' OR sname LIKE '%長%')")>0){
+    		/*if(dm.sqlGetInt("SELECT COUNT(*) FROM empl WHERE idno='"+username+"' AND (sname LIKE '%主任%' OR sname LIKE '%長%')")>0){
     			sb.append("C,");
     		}//2階主管
-    		
+    		*/
     		
     		sb.append(dm.sqlGetStr("SELECT unit_module FROM empl WHERE idno='"+username+"'"));
     		
     		//寫單位cookie
     		cookie = new Cookie("unit", sb.toString());
-    		cookie.setMaxAge(60*60*24*365); //瀏覽器關閉失效    	
+    		//cookie.setMaxAge(60*60*24*365);  
+    		cookie.setMaxAge(60*60*24);
         	cookie.setDomain(".cust.edu.tw");
         	cookie.setPath("/");
         	response.addCookie(cookie);

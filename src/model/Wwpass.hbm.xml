@@ -16,7 +16,7 @@
         
         <property name="freename" type="java.lang.String">
             <column name="freename">
-                <comment>帳號</comment>
+                <comment>自訂帳號</comment>
             </column>
         </property>
         
