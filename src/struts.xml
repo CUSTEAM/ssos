@@ -39,6 +39,10 @@
 		<action name="ReSetPassword" class="action.ReSetPasswordAction">
 			<result>/jsp/ReSetPassword.jsp</result>
 		</action>
+		
+		<action name="Status511" class="action.Status511Action">
+			<result>/jsp/Status511.jsp</result>
+		</action>
 	</package>
 	
 </struts>

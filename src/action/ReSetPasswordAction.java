@@ -61,7 +61,7 @@ public class ReSetPasswordAction extends BaseAction{
 			dm.exSql("UPDATE wwpass SET password='"+birthday+"' WHERE username='"+m.get("username")+"'");
 			//dm.exSql("DELETE FROM wwpass WHERE username='"+m.get("username")+"'");
 			//dm.exSql("INSERT INTO wwpass(username, password, priority)VALUES('"+m.get("username")+"', '"+m.get("password")+"', '"+m.get("priority")+"');");
-			msg.setMsg(m.get("name")+"您好, 您的帳號密碼已重新設為預設值&nbsp;<a href='/ssos'>點此處重新登入</a>");
+			msg.setMsg(m.get("name")+"您好, 您的帳號重新設為預設值,<br>教職員為身分證號, 學生則為學號;<br>密碼設定為「"+birthday+"」<br><a href='/ssos'>點此處重新登入</a>");
 			savMessage(msg);
 		}
 		

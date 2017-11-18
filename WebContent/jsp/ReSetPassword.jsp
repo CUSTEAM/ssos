@@ -47,7 +47,7 @@
                     <form role="form" action="ReSetPassword" method="post" class="form-signin">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="學號或教職員帳號" name="idno" id="idno" value="${cookie['loginusername'].value}" autofocus>
+                                <input class="form-control" placeholder="學生學號或教職員身分證號" name="idno" id="idno" value="${cookie['loginusername'].value}" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control timepick" placeholder="生日" name="birthday" id="birthday" type="text" value="">
@@ -64,19 +64,36 @@
         </div>
         
         
-        <div class="col-md-4">
-        <h2>使用方式</h2>
-			<p>身分證號欄位請輸入本校教職員或學生登記身份文件證號(身分證、居留證或其他文件)。</p>
-			<p>出生日期欄位請輸入您的生日(例如出生日期為88年8月18日請輸入19990818)。</p>
-			<p>執行成功後，<span class="label label-primary">教職員帳號為身分證號</span><span class="label label-success">學生帳號為學號</span>，密碼皆為出生日期(例如出生日期為88年8月18日密碼即為19990818)。</p>
-			<p>教職員登入後可將預設帳號自行更改為其它文字</p>
+        <div class="col-md-8">
+        
+        
+        <h2>操作方式 <small>請先閱讀下列說明後進行操作</small></h2>
+        <dl class="dl-horizontal">		  	
+			    <dt>身分證號欄位</dt>
+			    <dd>請輸入登記身份文件證號身分證、居留證或其他申請本校文件</dd>		  	
+			    <dt>出生日期欄位</dt>
+			    <dd>請輸入您的生日例如出生日期為88年8月18日請輸入19990818</dd>		  	
+			    <dt>執行成功後</dt>
+			    <dd>帳號恢復為預設值, 同學為學號、同仁則為身分證號。<br>密碼為西元出生日期(例如生日88年8月18日密碼為19990818)</dd>
+			</a>
+		</dl>
+        
+        
+        <h2>常見問題 <small>操作過程中許多人容易發生的疑問</small></h2>
+        <dl class="dl-horizontal">
+        	<dt>操作無法順利完成</dt>
+			<dd>請檢查輸入資料是否正確。英文字母不區分大小寫。<br>若持續顯示無此帳號，同仁請洽人事單位，同學請洽教務單位確認。</dd>
+			<dt>操作過程複雜</dt>
+			<dd>依據資訊安全規定, 處理過程必需配合較複雜的輸入與比對, 處理結果不可與最初預設值一致</dd>        	
+        	<dt>完成但仍無法登入</dt>
+        	<dd>帳號恢復為預設值密碼為出生日期(例如出生日期為88年8月18日密碼即為19990818)</dd>
+        	<dt>自定帳號失效</dt>
+        	<dd>請在登入後更改帳號為其它文字</dd>
+        </dl>
         </div>
-        <div class="col-md-4">
-        <h2>注意事項</h2>
-			<p>當顯示無此帳號時，請檢查輸入的資料是否正確。英文字母不區分大小寫。</p>
-			<p>若仍顯示無此帳號時，同仁請洽人事單位，同學請洽教務單位確認。</p>
-			<p>由於本校資訊安全規定，處理過程不顯示任何直接對應資料。</p>
-        </div>
+        
+        
+			
     </div>
 </div>
 
