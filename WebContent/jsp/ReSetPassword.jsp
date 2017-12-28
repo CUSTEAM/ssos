@@ -41,13 +41,13 @@
         	<c:if test="${!empty msg.msg}"><div class="alert alert-warning">${msg.msg}</div></c:if>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">復原密碼</h3>
+                    <h3 class="panel-title">重設密碼</h3>
                 </div>
                 <div class="panel-body">
                     <form role="form" action="ReSetPassword" method="post" class="form-signin">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="學生學號或教職員身分證號" name="idno" id="idno" value="${cookie['loginusername'].value}" autofocus>
+                                <input class="form-control" placeholder="身分證號" name="idno" id="idno" value="${cookie['loginusername'].value}" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control timepick" placeholder="生日" name="birthday" id="birthday" type="text" value="">
@@ -70,23 +70,25 @@
         <h2>操作方式 <small>請先閱讀下列說明後進行操作</small></h2>
         <dl class="dl-horizontal">		  	
 			    <dt>身分證號欄位</dt>
-			    <dd>請輸入登記身份文件證號身分證、居留證或其他申請本校文件</dd>		  	
-			    <dt>出生日期欄位</dt>
-			    <dd>請輸入您的生日例如出生日期為88年8月18日請輸入19990818</dd>		  	
+			    <dd>請同學或同仁一律輸入身分證號</dd>		  	
+			    <dt>生日欄位</dt>
+			    <dd>請點選日曆或自行輸入(例如88年8月18日請輸入19990818)</dd>		  	
 			    <dt>執行成功後</dt>
-			    <dd>帳號恢復為預設值, 同學為學號、同仁則為身分證號。<br>密碼為西元出生日期(例如生日88年8月18日密碼為19990818)</dd>
+			    <dd>同學帳號為學號,同仁則為身分證號<br>密碼為西元出生日期(例如生日88年8月18日密碼為19990818)</dd>
 			</a>
 		</dl>
         
         
         <h2>常見問題 <small>操作過程中許多人容易發生的疑問</small></h2>
         <dl class="dl-horizontal">
+        	<dt>操作過程複雜</dt>
+			<dd>依據資訊安全規定,處理過程必需配合較複雜的輸入與比對,處理結果不可與最初預設值一致</dd>
         	<dt>操作無法順利完成</dt>
-			<dd>請檢查輸入資料是否正確。英文字母不區分大小寫。<br>若持續顯示無此帳號，同仁請洽人事單位，同學請洽教務單位確認。</dd>
-			<dt>操作過程複雜</dt>
-			<dd>依據資訊安全規定, 處理過程必需配合較複雜的輸入與比對, 處理結果不可與最初預設值一致</dd>        	
+			<dd>請檢查輸入資料是否正確,英文字母不區分大小寫<br>若持續顯示無此帳號,同仁請洽人事單位,同學請洽教務單位確認</dd>
         	<dt>完成但仍無法登入</dt>
-        	<dd>帳號恢復為預設值密碼為出生日期(例如出生日期為88年8月18日密碼即為19990818)</dd>
+        	<dd>同學帳號為學號,同仁則為身分證號<br>密碼為西元出生日期(例如生日88年8月18日密碼為19990818)</dd>
+        	<dt>紙本申請</dt>
+        	<dd>填妥申請書 <a href="http://www.cust.edu.tw/cc/download/account.pdf" target="_blank" class ="btn btn-primary btn-small"><i class="i glyphicon glyphicon-floppy-disk"></i> pdf</a> 攜學生證或識別證至電算中心辦理</dd>
         	<dt>自定帳號失效</dt>
         	<dd>請在登入後更改帳號為其它文字</dd>
         </dl>
@@ -104,7 +106,7 @@ $('.timepick').datepicker({
 	changeMonth: true,
 	changeYear: true,
 	//minDate: '@minDate',
-	yearRange: "-100:-15"
+	yearRange: "-60:-16"
 	//showButtonPanel: true,
 	//dateFormat: 'yy-MM-dd'
 });
