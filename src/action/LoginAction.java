@@ -1,5 +1,7 @@
 package action;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -9,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import model.Message;
 import model.Wwpass;
+import model.Wwpasshist;
 
 /**
  * 登入動作
@@ -23,7 +26,7 @@ public class LoginAction extends BaseAction{
 			msg.setWarning("帳號或密碼未輸入完成!");
 			savMessage(msg);
 			getSession().invalidate();
-			return "unsuccess";
+			return SUCCESS;
 		}
 		
 		//立即清除Cookie
@@ -36,7 +39,7 @@ public class LoginAction extends BaseAction{
 		        cookies[i].setMaxAge(0);
 		        cookies[i].setValue(null);
 		        response.addCookie(cookies[i]);
-			}          
+			}
         }		
     	DetachedCriteria c = DetachedCriteria.forClass(Wwpass.class);
 		c.add(Restrictions.eq("username", username));
@@ -48,16 +51,41 @@ public class LoginAction extends BaseAction{
 			c.add(Restrictions.eq("password", password));
 			list=df.getHibernateDAO().getHibernateTemplate().findByCriteria(c);
 		}
-		if(list.size()<1){			
-			msg.setError("驗證失敗");
+		
+		//寫入登入記錄	
+		Wwpasshist w=new Wwpasshist();
+		w.setIpaddress(ipaddress);		
+		w.setRemoteaddress(remoteaddress);
+		w.setUseragent(request.getHeader("User-Agent"));
+		w.setUsername(username);
+		w.setUptime(new Timestamp(new Date().getTime()));
+		if(list.size()<1){		
+			
+			
+			System.out.println("SELECT COUNT(*)FROM stmd WHERE student_no='"+username+"'");
+			try {
+				if(df.sqlGetInt("SELECT COUNT(*)FROM stmd WHERE student_no='"+username+"'")==1||
+						df.sqlGetInt("SELECT COUNT(*)FROM empl WHERE idno='"+username+"'")==1) {
+					msg.setError("帳號尚未生效");
+				}else {
+					msg.setError("驗證失敗");
+				}
+			}catch(Exception e) {
+				//
+			}
+			
 			savMessage(msg);
-			return "unsuccess";
-		}
+			w.setLoginmsg("0");
+			df.update(w);
+			return SUCCESS;
+		}else {
+			//驗證成功
+			df.update(w);
+		}		
 		Wwpass user=(Wwpass)list.get(0);
 		//將自訂帳號對應永久帳號
 		username=user.getUsername();
-		//寫入登入記錄		
-		df.exSql("INSERT SYS_LOG_ACCESS(userid,action,accip)VALUES('"+username+"','"+request.getServletPath()+"','"+ip+"')");
+		
 		//寫身份cookie
 		Cookie cookie = new Cookie("userid", request.getSession().getId()+username.hashCode());	    	
 		cookie.setMaxAge(60*60*24*365); // 瀏覽器關閉失效   	
@@ -90,6 +118,10 @@ public class LoginAction extends BaseAction{
     			sb.append("S,");//系助理
     		}
     		
+    		if(dm.sqlGetInt("SELECT COUNT(*)FROM SYS_ADMIN WHERE idno='"+username+"'")>0){
+    			sb.append("00000,");//系助理
+    		}
+    		
     		/*if(dm.sqlGetInt("SELECT COUNT(*) FROM empl WHERE idno='"+username+"' AND (sname LIKE '%主任%' OR sname LIKE '%長%')")>0){
     			sb.append("C,");
     		}//2階主管
@@ -108,9 +140,9 @@ public class LoginAction extends BaseAction{
     		response.sendRedirect("/eis/Calendar");//轉送至eis
     		return null;
     	}    	
-		return "unsuccess";
+		return SUCCESS;
 	}	
 	//頁面物件
-	public String username, password, ip;
+	public String username, password, remoteaddress, ipaddress;
 	
 }

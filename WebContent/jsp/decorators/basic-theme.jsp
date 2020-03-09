@@ -18,28 +18,21 @@
 <title><decorator:title default="Welcome!" /> - 中華科大教職員資訊系統</title>
 <link rel="stylesheet" href="/eis/inc/bootstrap/css/bootstrap.css" />
 <link rel="stylesheet" href="/eis/inc/css/advance.css" />
-<link rel="stylesheet" href="/eis/inc/bootstrap/abadmin/css/sb-admin-2.css">
 <script src="/eis/inc/js/jquery.js"></script>
 <script src="/eis/inc/bootstrap/js/bootstrap.js"></script>
 <script src="/eis/inc/js/plugin/jquery.blockUI.js"></script>
 <link rel="stylesheet" href="/eis/inc/bootstrap/plugin/bootstrap-submenu/css/bootstrap-submenu.min.css">
 <script src="/eis/inc/bootstrap/plugin/bootstrap-submenu/js/bootstrap-submenu.min.js" defer></script>
-
 <!--[if lt IE 9]>
 <script type="text/javascript">
-/*if (window.confirm('偵測到系統不支援的IE瀏覽器版本, 請問是否要下載最新瀏覽器?')) {
-    window.location.href='http://windows.microsoft.com/zh-tw/internet-explorer/download-ie';
-}*/
-window.location.href='http://mozilla.com.tw';
+alert("請更新瀏覽器版本");
+window.location.href="https://www.mozilla.org";
 </script>
 <![endif]-->
 <decorator:head />
 </head>
 <body
 	<decorator:getProperty property="body.onload" writeEntireProperty="true" />>
-	
-	
-	
 	<c:if test="${!empty msg}">
 		<script>
 			$(window).load(function() {
@@ -71,17 +64,10 @@ window.location.href='http://mozilla.com.tw';
 				</div>
 			</div>
 		</div>
-	</c:if>
-	
-	
-	
-	
-	
-	
+	</c:if>		
 	<div id="mainmenu"></div>	
 	<div class="content-page-3">
 		<decorator:body />
 	</div>
-
 </body>
 </html>

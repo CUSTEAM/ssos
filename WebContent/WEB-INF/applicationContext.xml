@@ -32,6 +32,9 @@
             	<value>model/Just.hbm.xml</value>
             	<value>model/Classes.hbm.xml</value>
             	<value>model/Wwpass.hbm.xml</value>
+            	<value>model/SysLogSecurity.hbm.xml</value>
+            	<value>model/SysLog.hbm.xml</value>
+            	<value>model/Wwpasshist.hbm.xml</value>
             </list>
         </property>
     </bean>

@@ -29,7 +29,7 @@
 	
 	<package name="publiclogin" extends="abstract_struts" namespace="/">		
 		<action name="Login" class="action.LoginAction">
-			<result name="unsuccess">/index.jsp</result>
+			<result>/index.jsp</result>
 		</action>
 		
 		<action name="Logout" class="action.Logout">
@@ -42,6 +42,15 @@
 		
 		<action name="Status511" class="action.Status511Action">
 			<result>/jsp/Status511.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+	
+	<package name="ajax" extends="struts-default, json-default" namespace="/">	
+		<action name="whoIs" class="ajax.whoIs">
+			<result type="json"/>
 		</action>
 	</package>
 	
