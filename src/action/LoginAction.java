@@ -62,17 +62,7 @@ public class LoginAction extends BaseAction{
 		if(list.size()<1){		
 			
 			
-			System.out.println("SELECT COUNT(*)FROM stmd WHERE student_no='"+username+"'");
-			try {
-				if(df.sqlGetInt("SELECT COUNT(*)FROM stmd WHERE student_no='"+username+"'")==1||
-						df.sqlGetInt("SELECT COUNT(*)FROM empl WHERE idno='"+username+"'")==1) {
-					msg.setError("帳號尚未生效");
-				}else {
-					msg.setError("驗證失敗");
-				}
-			}catch(Exception e) {
-				//
-			}
+			msg.setError("驗證失敗");
 			
 			savMessage(msg);
 			w.setLoginmsg("0");
