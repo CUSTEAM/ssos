@@ -108,8 +108,12 @@ public class LoginAction extends BaseAction{
     			sb.append("S,");//系助理
     		}
     		
+    		if(dm.sqlGetInt("SELECT COUNT(*)FROM CODE_DEPT WHERE director_deputy='"+username+"'")>0){
+    			sb.append("S,");//副主任
+    		}
+    		
     		if(dm.sqlGetInt("SELECT COUNT(*)FROM SYS_ADMIN WHERE idno='"+username+"'")>0){
-    			sb.append("00000,");//系助理
+    			sb.append("00000,");//系統管理
     		}
     		
     		/*if(dm.sqlGetInt("SELECT COUNT(*) FROM empl WHERE idno='"+username+"' AND (sname LIKE '%主任%' OR sname LIKE '%長%')")>0){
